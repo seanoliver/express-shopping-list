@@ -14,7 +14,7 @@ afterEach(function() {
 
   const itemIndex = db.items.indexOf(item);
   db.items.splice(itemIndex, 1);
-
+  
 });
 
 

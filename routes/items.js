@@ -44,6 +44,7 @@ router.post("/", function (req, res) {
 router.get('/:name', function (req, res) {
   const item = db.items.filter(item => item.name === req.params.name)[0];
   if (item === undefined) throw new NotFoundError(`No such item: ${req.params.name}`);
+
   return res.json(item);
 });
 
@@ -59,12 +60,10 @@ router.get('/:name', function (req, res) {
 
 router.patch('/:name', function (req, res) {
   const item = db.items.filter(item => item.name === req.params.name)[0];
-  console.log(item)
 
   if (item === undefined) throw new NotFoundError(`No such item: ${req.params.name}`);
 
   for (const key in req.body) {
-    console.log('req.body.key', req.body.key, 'req.body', req.body);
     item[key] = req.body[key];
   };
 
